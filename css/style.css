@@ -1,0 +1,131 @@
+/* Remove the BROWSER's default CSS. */
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*-----------*/
+
+body {
+    --main-color: rgb(255, 255, 255);
+    --secondary-color: #003985;
+    --font-color: #00082e;
+    --secondary-font-color: #ffffff;
+    
+    background-image: url("../img/3LamborghiniMiami-MAIN.jpg");
+}
+
+/* Define the horizontal lines again (<hr>)*/
+#horizontalLine {
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    margin: 10px 0;
+}
+
+/*-----------*/
+
+/* Style navbar header */
+/* Column the navbar when less than the max */
+@media (max-width: 768px) {
+    #navBar {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        background-color: var(--secondary-color);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+    }
+}
+
+.pageHeader {
+    background-image: url("../img/3LamborghiniMiami-MAIN.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#logoContainer {
+    display: flex;
+    align-items: center;
+}
+
+#logoContainer img {
+    margin-right: 10px;
+}
+
+#logoContainer h1 {
+    font-size: 50px;
+    color: var(--secondary-font-color);
+    text-shadow: -1px -1px 0 black, 1px -1px 0 black,
+                 -1px 1px 0 black, 1px 1px 0 black;
+}
+
+/*-----------*/
+
+.main {
+    background-color: var(--main-color);
+    color: var(--font-color);
+    justify-content: space-evenly;
+}
+
+.carCardTable {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    padding: 10px;
+}
+
+.carCard {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: calc(33.33% - 20px);
+    margin: 10px 0;
+    text-align: center;
+    font-family: arial;
+    box-sizing: border-box;
+    padding: 10px;
+}
+  
+#carPrice {
+    color: grey;
+    font-size: 22px;
+}
+  
+.carCard button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+  
+.carCard button:hover {
+    opacity: 0.7;
+}
+
+/*-----------*/
+
+/* Footer */
+.pageFooter {
+    background-color: var(--secondary-color);
+    color: var(--secondary-font-color);
+    text-align: center;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    font-size: large;
+    bottom: 0;
+    width: 100%;
+}
+
+.pageFooter a {
+    color: var(--secondary-font-color);
+    padding-top: 6px;
+}
