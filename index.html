@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Used Car Website</title>
+    <title>Andrae's Used Car Website</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <!-- For Favicon -->
     <link rel="shortcut icon" href="./img/a-letter-logo-png-4.png" type="image/x-icon">
-    <!-- For Javascript -->
+    <!-- For Javascript. " npx http-server " in console to start local server so the js can properly run. Of the 3 links 1 doesn't work(?) but the other two do. -->
     <script type="module" src="./js/usedCarFilter.js"></script>
 </head>
 
@@ -20,14 +20,64 @@
     <header class="pageHeader">
         <section id="logoContainer">
             <img src="./img/a-letter-logo-png-4.png" alt="Andrae's logo" height="65" width="65">
-            <h1>Used Cars</h1>
+            <h1>Andrae's Used Cars</h1>
         </section>
     </header>    
 
     <!-- <hr id="horizontalLine"> -->
     <main class="main">
         <section class="filterBox">
-            <h4>hbdsjhagdvjahsvdajhdvbjahsadsdasdasjdhbasjkhdvabbsjdgvawhdgvasjdgvawmdjgvawjmdhgasmywdsdasd</h4>
+            <div class="filter">
+                <label for="minYear">Min. car year:</label>
+                <input type="number" id="minYear" name="minYear" min="2000" max="2023">
+              
+                <label for="maxYear">Max. car year:</label>
+                <input type="number" id="maxYear" name="maxYear" min="2000" max="2023">
+            </div>
+              
+            <div class="filter">
+                <label for="make">Select one or more car makes:</label>
+                <select id="make" name="make" multiple>
+                  <option value="Toyota">Toyota</option>
+                  <option value="Ford">Ford</option>
+                  <option value="Lexus">Lexus</option>
+                  <option value="Honda">Honda</option>
+                  <option value="Nissan">Nissan</option>
+                </select>
+            </div>
+              
+            <div class="filter">
+                <label for="maxMileage">Max. car mileage:</label>
+                <select id="maxMileage" name="maxMileage">
+                  <option value="15000">Under 15000 miles</option>
+                  <option value="30000">Under 30000 miles</option>
+                  <option value="50000">Under 50000 miles</option>
+                  <option value="75000">Under 75000 miles</option>
+                  <option value="100000">Under 100000 miles</option>
+                </select>
+            </div>
+              
+            <div class="filter">
+                <label for="minPrice">Min. car price:</label>
+                <input type="number" id="minPrice" name="minPrice">
+              
+                <label for="maxPrice">Max. car price:</label>
+                <input type="number" id="maxPrice" name="maxPrice">
+            </div>
+              
+            <div class="filter">
+                <label for="color">Select one or more car colors:</label>
+                <select id="color" name="color" multiple>
+                    <option value="silver">Silver</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="red">Red</option>
+                    <option value="blue">Blue</option>
+                </select>
+              
+            </div>
+            
+            <button id="filterButton">Apply Filter</button>
         </section>
 
         <hr id="horizontalLine">

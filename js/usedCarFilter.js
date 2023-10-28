@@ -1,40 +1,73 @@
-import usedCars from "./usedCars";
+import usedCars from "./usedCars.js";
 
-// Reference the main section in the HTML
-const mainSection = document.querySelector(".main");
+// Card table and image default
+const carCardTable = document.querySelector(".carCardTable");
+const defaultCarImage = document.querySelector(".carCard img").src;
 
-// Reference the car card template (the one with the basic $19.99 price) and hide it
-const templateCarCard = document.querySelector(".carCard");
-templateCarCard.style.display = "none"; // Hide the template car card
+// Hide the default carCard
+const defaultCarCard = document.querySelector(".carCard:first-child");
+defaultCarCard.style.display = "none";
 
-// Loop through the usedCars array and create car cards for each car
+//---------- For showing all the cards -------------
+
 usedCars.forEach((car) => {
-  // Clone the template car card
-  const carCard = templateCarCard.cloneNode(true);
-  carCard.style.display = "block"; // Display the cloned car card
+  // Create a new carCard object
+  const carCard = document.createElement("div");
+  carCard.classList.add("carCard");
 
-  // Set the content of the car card based on the car object from usedCars
-  carCard.querySelector("h1#carMake").textContent = car.make;
-  carCard.querySelector("h2#carModel").textContent = car.model;
-  carCard.querySelector("h3#carYear").textContent = car.year;
-  carCard.querySelector("p#carPrice").textContent = `$${car.price}`;
-  carCard.querySelector("p#carColor").textContent = car.color;
-  carCard.querySelector("p#carMileage").textContent = `Mileage: ${car.mileage} miles`;
-  carCard.querySelector("p#carGasMileage").textContent = `Gas Mileage: ${car.gasMileage}`;
+  // Add the same CSS attributes as the original carCard
+  carCard.style.boxShadow = "0 4px 8px 0 rgba(0, 0, 0, 0.2)";
+  carCard.style.maxWidth = "calc(33.33% - 20px)";
+  carCard.style.margin = "10px 0";
+  carCard.style.textAlign = "center";
+  carCard.style.fontFamily = "arial";
+  carCard.style.boxSizing = "border-box";
+  carCard.style.padding = "10px";
   
-  // Append the car card to the main section
-  mainSection.appendChild(carCard);
+  // Add the car's information to the carCards
+  carCard.innerHTML = `
+    <img src="${defaultCarImage}" alt="Picture of ${car.make} ${car.model}" style="width:100%">
+    <h1>${car.make} ${car.model}</h1>
+    <h3>Year: ${car.year}</h3>
+    <p>$${car.price}</p>
+    <p>Color: ${car.color}</p>
+    <p>Mileage: ${car.mileage}</p>
+    <p>Gas Mileage: ${car.gasMileage}</p>
+    <button>Add to Cart</button>
+  `;
+
+  // Append the carCard element to the carCardTable element.
+  carCardTable.appendChild(carCard);
 });
 
-/**
- * The interface must also support a filter functionality (to be implemented using JS) which will allow users to specify their desired values for the following filter fields
- * (what html elements you use to implement them is upto you)
-a. Min. car year – Max. car year (e.g. 2005 -- 2012)
-b. Select one or more options from the available (car) make at the dealership (for e.g. Toyota, or Ford, or Lexus, etc.)
-c. Choose the desired max threshold value of car mileage (e.g. under 15000 or under 30000 miles etc.)
-d. Min. car price – Max. car price (e.g. 5,000 – 25,000) [or just specify the max price]
-e. Select one or more options from the available (car) colors (e.g. silver, white, black, etc)
+function applyFilter() {
+  // Get the selected color options from the dropdown.
+  const selectedColors = Array.from(document.querySelectorAll('#color option:checked')).map(option => option.value);
 
+  // Hide all car cards initially.
+  const carCards = document.querySelectorAll('.carCard');
+  carCards.forEach(carCard => {
+    carCard.style.display = 'none';
+  });
+
+  // Show car cards that match the selected colors.
+  usedCars.forEach(car => {
+    if (selectedColors.includes(car.color)) {
+      // Find the  car card and show it.
+      const carCard = document.querySelector(`.carCard:has(#carColor[value="${car.color}"])`);
+      if (carCard) {
+        carCard.style.display = 'block';
+      }
+    }
+  });
+
+  console.log("Filter function called.");
+}
+
+// Makes an event for the button
+document.getElementById("filterButton").addEventListener("click", applyFilter);
+
+/*
 If no cars from the dataset matches the filter criteria set by the user, the interface must state the same to user and ask them to try again.
 In such a scenario, no car listings should be shown on the interface.
 */

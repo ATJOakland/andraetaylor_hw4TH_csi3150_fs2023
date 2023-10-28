@@ -72,6 +72,32 @@ body {
     justify-content: space-evenly;
 }
 
+.filterBox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--secondary-color);
+    color: var(--secondary-font-color);
+}
+
+.filter {
+    flex: 1;
+    margin: 10px;
+}
+
+#filterButton {
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#filterButton:hover {
+    background-color: rgb(112, 0, 0);
+}
+
 .carCardTable {
     display: flex;
     flex-wrap: wrap;
