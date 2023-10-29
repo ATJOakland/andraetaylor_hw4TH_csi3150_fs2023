@@ -36,14 +36,27 @@
             </div>
               
             <div class="filter">
-                <label for="make">Select one or more car makes:</label>
-                <select id="make" name="make" multiple>
-                  <option value="Toyota">Toyota</option>
-                  <option value="Ford">Ford</option>
-                  <option value="Lexus">Lexus</option>
-                  <option value="Honda">Honda</option>
-                  <option value="Nissan">Nissan</option>
-                </select>
+                <label for="make">Select a car make:</label>
+                <select id="make" name="make">
+                    <option value="" data-no-filter selected>Select a make</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Lexus">Lexus</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Subaru">Subaru</option>
+                    <option value="Mazda">Mazda</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Dodge">Dodge</option>
+                    <option value="Cadillac">Cadillac</option>
+                    <option value="Jaguar">Jaguar</option>
+                    <option value="Tesla">Tesla</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="BMW">BMW</option>
+                  </select>
             </div>
               
             <div class="filter">
@@ -53,7 +66,7 @@
                   <option value="30000">Under 30000 miles</option>
                   <option value="50000">Under 50000 miles</option>
                   <option value="75000">Under 75000 miles</option>
-                  <option value="100000">Under 100000 miles</option>
+                  <option value="100000" selected>Under 100000 miles</option>
                 </select>
             </div>
               
@@ -68,19 +81,20 @@
             <div class="filter">
                 <label for="color">Select one or more car colors:</label>
                 <select id="color" name="color" multiple>
+                    <option value="" data-no-filter selected>Select a color</option>
                     <option value="silver">Silver</option>
                     <option value="white">White</option>
                     <option value="black">Black</option>
                     <option value="red">Red</option>
                     <option value="blue">Blue</option>
+                    <option value="gray">Gray</option>
+                    <option value="green">Green</option>
                 </select>
-              
-            </div>
+            </div>            
             
             <button id="filterButton">Apply Filter</button>
+            <button id="resetFilterButton">Show All Cars.</button>
         </section>
-
-        <hr id="horizontalLine">
 
         <div class="carCardTable">
             <div class="carCard">
@@ -95,6 +109,8 @@
                 <p id="addToCartButton"><button>Add to Cart</button></p>
             </div>
         </div>
+
+        <h1 id="noCarsMessage">No cars are available with your filter settings</h1>
     </main>
 
     <!-- <hr id="horizontalLine"> -->
